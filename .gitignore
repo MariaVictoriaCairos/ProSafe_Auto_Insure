@@ -20,3 +20,4 @@ rad.json
 *.flf
 #Test results file
 TestResults.xmlData/motor_data_final_para_powerbi.csv
+Data/motor_data_final_para_powerbi.csv
