@@ -78,7 +78,53 @@ Ambas tablas presentan información histórica de pólizas de vehículos, con lo
 La **relación** entre ambas es de **continuidad temporal**. Se unen ambas tablas para obtener el historial completo de pólizas y siniestros de los mismos vehículos (por su `OBJECT_ID`) entre 2011 y 2018.  En una tabla unificada se  analizará la evolución de ese vehículo/póliza a lo largo del tiempo.
 
 La tabla final con la que se inicia el EDA tiene un número de filas de 802.036, y el número de columnas es 16. la información se almacena en la carpeta `Data` con el nombre `motor_data_2011_2018.csv`
+## Estructura de archivos del proyecto
+.
+├── Data
+│   ├── motor_data_2011_2018_EDA.csv
+│   ├── motor_data_2011_2018_pre.csv
+│   ├── motor_data_2011_2018_RISK.csv
+│   ├── motor_data_2011_2018.csv
+│   ├── motor_data_final_para_powerbi.csv
+│   ├── motor_data11-14lats.csv
+│   ├── motor_data14-2018.csv
+│   ├── nuevo_cliente.csv
+│   └── resultado_nuevo_cliente.csv
+├── Image
+│   ├── boxplot1.png
+│   ├── codo.png
+│   ├── codo2.png
+│   ├── correlacion.png
+│   ├── distribuciones_var_cat.png
+│   ├── distribuciones_var_date.png
+│   ├── distribuciones_variables.png
+│   ├── k-Means1.png
+│   ├── k-Means2.png
+│   ├── var_cruzadas_cat_box.png
+│   ├── var_cruzadas_cat.png
+│   └── var_cruzadas.png
+├── Modelos
+│   ├── kmeans_model.pkl
+│   ├── pca_model.pkl
+│   └── preprocessing_pipeline.pkl
+├── Notebook
+│   ├── __pycache__
+│   │   ├── data_utils.cpython-310.pyc
+│   │   └── data_utils.cpython-313.pyc
+│   ├── 01-EDAMotor_data11-14lats.ipynb
+│   ├── 02-Preproceso.ipynb
+│   ├── 03-Clustering_K-Means.ipynb
+│   ├── 04-Clustering_DBSCAN.ipynb
+│   ├── 05-Evaluacion_Nuevo_Cliente_CORREGIDO.py
+│   ├── 05-Evaluacion_Nuevo_Cliente.py
+│   ├── 06-Generar_Nuevo_Cliente.ipynb
+│   ├── data_utils.py
+│   └── muestra.ipynb
+├── README.md
+├── Siniestralidad_Riesgo3.pbix
+└── Siniestralidad_Riesgo3.pdf
 
+6 directories, 38 files
 
 # Adquisición y exploración inicial de datos
 - Se realiza la carga de cada tabla y se realiza la unión utilizando `concat`, apilando los registros uno debajo del otro.
@@ -673,3 +719,83 @@ Una vez analizada la gráfica, se presenta a continuación una tabla con la clas
 Este proceso de filtrado previo y clustering con K-Means permite identificar perfiles de riesgo diferenciados de manera más precisa, evitando el efecto distorsionante de los casos extremos y facilitando una segmentación interpretable para la toma de decisiones en el negocio.
 
 
+## 📊 Documentación de Dashboards Power BI - Análisis de Riesgo y Siniestralidad
+
+### 📁 Archivos entregados
+Debido a la falta de licencia para compartir informes en línea o en entornos web, este proyecto se entrega en dos formatos:
+- **Archivo .pbix de Power BI Desktop**
+- **Archivo .PDF con visualizaciones de los dashboards**
+
+---
+
+## 🔍 Descripción de los Dashboards
+
+### 1. **Dashboard de Estudio de Siniestralidad**
+Este panel permite explorar la siniestralidad del portafolio de seguros mediante múltiples filtros disponibles en una barra superior (tipo de vehículo, marca, sexo, tipo de póliza, entre otros).
+
+#### Componentes:
+- Segmentación dinámica por características de las pólizas.
+- Indicadores clave como:
+  - Total de siniestros (€)
+  - Ratio de siniestralidad (%)
+  - Siniestro medio (€)
+  - Frecuencia de siniestros (%)
+  - Beneficios (%) y primas cobradas.
+- Visualización de siniestros por tipo de vehículo, sexo y tipo de seguro.
+- Evolución histórica (2011–2018) de las principales métricas.
+
+#### 🧑‍💼 Uso:
+Selecciona cualquier combinación de filtros para observar cómo varían las métricas de siniestralidad a lo largo del tiempo o entre distintos perfiles de póliza.
+
+---
+
+### 2. **Dashboard de Segmentación de Clientes**
+Este panel presenta la segmentación de clientes realizada a través del algoritmo de clustering **K-Means**, clasificándolos por **nivel de riesgo**.
+
+#### Componentes:
+- Visualización de clusters en un gráfico de dispersión (PCA).
+- Distribución de características de los clientes por nivel de riesgo:
+  - Promedio de valor asegurado
+  - Promedio de primas
+  - Promedio de siniestros
+- Proporción de siniestros por **marca del vehículo** y por **uso del vehículo**.
+
+#### 🧑‍💼 Uso:
+Interactúa con los filtros para explorar cómo se comportan los distintos clusters de clientes en términos de siniestralidad y prima. Ideal para identificar perfiles de alto riesgo y potenciales oportunidades de optimización.
+
+---
+
+### 3. **Dashboard de Análisis de Riesgo del Nuevo Cliente**
+Este panel permite **analizar dinámicamente el riesgo de un nuevo cliente** en tiempo real utilizando un script de Python embebido que aplica K-Means sobre los datos históricos para predecir su nivel de riesgo.
+
+#### Componentes:
+- Entrenamiento automático con datos históricos (2011–2018).
+- Asignación de nivel de riesgo a un nuevo cliente ingresado.
+- Visualización de las principales características asociadas al cluster asignado.
+- Comparación del cliente con perfiles existentes.
+
+#### 🧑‍💼 Uso:
+1. Ingresar las características del nuevo cliente.
+2. Ejecutar el script embebido.
+3. Observar en qué cluster de riesgo se clasifica.
+4. Analizar visualmente las métricas clave y comparar con clientes similares.
+
+---
+
+### 4. **Tooltip dinámico por Nivel de Riesgo**
+Función complementaria mostrada como parte de la visualización de dispersión en los paneles de segmentación. Al pasar el cursor sobre un punto del gráfico:
+
+#### Componentes:
+- Muestra información específica del cliente según su clasificación en el cluster.
+- Presenta las características top de siniestralidad asociadas al nivel de riesgo.
+
+#### 🧑‍💼 Uso:
+Al explorar la gráfica de dispersión, pasa el cursor sobre cualquier punto para obtener detalles contextuales enriquecidos sobre ese cliente/cluster.
+
+---
+
+## 🛠️ Requisitos para Uso
+- **Power BI Desktop instalado**.
+- Si se desea ejecutar el script de Python:
+  - Tener Python instalado y correctamente configurado en Power BI.
+  - Librerías necesarias: `pandas`, `sklearn`, entre otras usadas para KMeans.
