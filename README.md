@@ -170,7 +170,7 @@ La tabla final con la que se inicia el EDA tiene un número de filas de 802.036,
 
 
 ## Interpretación de las distribuciones de las variables numéricas
-![Distribuciones de variables numéricas](../Image/distribuciones_variables.png)
+![Distribuciones de variables numéricas](/Image/distribuciones_variables.png)
 
 A continuación se interpreta la distribución de las principales variables numéricas del dataset:
 
@@ -214,7 +214,7 @@ Las variables categóricas presentan las siguientes estadísticas básicas
 | MAKE          | 656289   | 797    | TOYOTA   | 236751  |
 | USAGE         | 656294   | 14     | Private  | 175970  |
 
-![Distribuciones de variables numéricas](../Image/distribuciones_var_cat.png)
+![Distribuciones de variables numéricas](/Image/distribuciones_var_cat.png)
 ## Interpretación de los histogramas de variables categóricas
 
 La gráfica presenta la distribución de frecuencia para tres variables categóricas principales del dataset:
@@ -242,7 +242,7 @@ Las estádisticas básicas de las variables tipo fecha son:
 | INSR_BEGIN  | 2011-07-01 | 2018-06-30 | 2556       | 0       | 2556     |
 | INSR_END    | 2011-07-13 | 2019-06-29 | 2908       | 0       | 2834     |
 
-![Distribuciones de variables numéricas](../Image/distribuciones_var_date.png)
+![Distribuciones de variables numéricas](/Image/distribuciones_var_date.png)
 
 ## Interpretación de las variables de fecha
 
@@ -304,7 +304,7 @@ Se ha generado un mapa de calor de correlaciones entre las principales variables
 
 #### Correlaciones relevantes:
 
-![Distribuciones de variables numéricas](../Image/var_cruzadas.png)
+![Distribuciones de variables numéricas](/Image/var_cruzadas.png)
 
 - **`INSURED_VALUE` y `PREMIUM`**: Correlación positiva moderada (**0.51**).  
   Los vehículos de mayor valor asegurado tienden a pagar primas más altas, lo cual es coherente con la lógica del mercado asegurador.
@@ -641,7 +641,7 @@ Para la segmentación de los perfiles de riesgo se implementó el algoritmo **K-
 La elección del número de clústeres (K) es un aspecto clave en la efectividad del modelo. Para ello, se aplicó el **método del codo**, que consiste en graficar la inercia (suma de las distancias cuadráticas de los puntos a su centroide más cercano) en función del número de clústeres.
 
 En el gráfico obtenido, se observa una disminución progresiva de la inercia a medida que aumenta K. Sin embargo, a partir de **K = 4 o 5**, la tasa de disminución comienza a estabilizarse, generando un punto de inflexión o "codo" en la curva.
-![selección de numero de cluster](../Image/codo.png)
+![selección de numero de cluster](/Image/codo.png)
 Este comportamiento indica que, a partir de ese punto, incrementar el número de clústeres aporta beneficios marginales en la compactación de los grupos, por lo que se considera óptimo trabajar con **4 o 5 clústeres** para lograr un balance entre simplicidad y representatividad.
 
 
@@ -655,7 +655,7 @@ Este comportamiento indica que, a partir de ese punto, incrementar el número de
 
 ### Selección de grupos con K-Means
 
-![gráfica de clusters](../Image/k-Means1.png)
+![gráfica de clusters](/Image/k-Means1.png)
 La gráfica representa la proyección de los datos en dos dimensiones mediante **Análisis de Componentes Principales (PCA)**, lo que permite visualizar de forma simplificada la distribución de los registros y la separación de los grupos generados por el algoritmo **K-Means**.
 
 ## Observaciones clave:
@@ -693,7 +693,7 @@ Previo al proceso de segmentación, se implementó un preprocesado para identifi
 - ✔ Se entrena un modelo de **K-Means** con los registros filtrados para obtener una segmentación robusta y clara.  
 
 ---
-![gráfica de clusters](../Image/k-Means2.png)
+![gráfica de clusters](/Image/k-Means2.png)
 ### 🔎 Interpretación del Gráfico PCA con K-Means (K=5)
 
 - Se observan **5 clústeres diferenciados**, representados mediante colores distintos.  
