@@ -59,14 +59,14 @@ Contiene datos de pólizas de seguro para vehículos entre los años 2011 y 2014
 - **CLAIM_PAID:** Importe pagado en caso de siniestro (puede haber valores nulos).
 
 El número de filas que tiene la tabla es 293.537, y el número de columnas es 15
----
+
 
 ### `motor_data14-2018.csv`
 
 Tiene la misma estructura que la tabla anterior, pero contiene datos de pólizas para el periodo de 2014 a 2018. Las columnas son idénticas.
 
 El número de filas es de 508.499, y el número de columnas es 15
----
+
 
 ## Relación entre las Tablas
 
@@ -79,7 +79,7 @@ La **relación** entre ambas es de **continuidad temporal**. Se unen ambas tabla
 
 La tabla final con la que se inicia el EDA tiene un número de filas de 802.036, y el número de columnas es 16. la información se almacena en la carpeta `Data` con el nombre `motor_data_2011_2018.csv`
 ## Estructura de archivos del proyecto
-.
+```.
 ├── Data
 │   ├── motor_data_2011_2018_EDA.csv
 │   ├── motor_data_2011_2018_pre.csv
@@ -125,7 +125,7 @@ La tabla final con la que se inicia el EDA tiene un número de filas de 802.036,
 └── Siniestralidad_Riesgo3.pdf
 
 6 directories, 38 files
-
+```
 # Adquisición y exploración inicial de datos
 - Se realiza la carga de cada tabla y se realiza la unión utilizando `concat`, apilando los registros uno debajo del otro.
 - Se validan los duplicados:  
