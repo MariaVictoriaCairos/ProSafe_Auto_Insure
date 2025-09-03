@@ -356,9 +356,13 @@ Esto sugiere que no existe una relación lineal fuerte entre estas variables num
 ## Conclusiones Generales
 
 ✅ El tipo de vehículo, marca y uso están relacionados con el importe pagado en siniestros, aunque la variabilidad interna dentro de cada categoría es alta.
+
 ✅ Los siniestros de mayor importe se concentran principalmente en vehículos pesados, de transporte, de carga o agrícolas.
+
 ✅ Algunas marcas específicas y usos están asociados a siniestros costosos, mientras que otros apenas presentan siniestralidad significativa.
+
 ✅ Las distribuciones muestran la presencia de muchos valores extremos (outliers), lo que sugiere que es necesario tener precaución en el tratamiento de estos valores durante el modelado.
+
 
 
 ## Análisis de Inconsistencias
@@ -429,9 +433,13 @@ A partir del análisis exploratorio, los gráficos de dispersión, las correlaci
 Aunque el dataset permite realizar análisis iniciales y se observan patrones consistentes, también existen señales claras de posibles inconsistencias que deben ser revisadas antes de profundizar en el modelado predictivo:
 
 ✅ Validar valores extremos en siniestros.  
+
 ✅ Revisar coherencia entre tipo de vehículo, uso y siniestralidad.  
+
 ✅ Depurar y normalizar variables categóricas como `MAKE`.  
+
 ✅ Depurar duplicados y validar la consistencia de fechas.  
+
 
 Abordar estos aspectos es clave para asegurar que los modelos predictivos y segmentaciones resultantes sean robustos y confiables.
 
@@ -451,7 +459,8 @@ El primer paso en el preprocesamiento consiste en gestionar correctamente los va
 
 Los valores nulos en la columna `CLAIM_PAID` no se imputan de forma tradicional, ya que en este caso representan pólizas **sin siniestro**. Por lo tanto:
 
-✅ Los valores nulos se completan con `0`, indicando que no hubo siniestro.  
+✅ Los valores nulos se completan con `0`, indicando que no hubo siniestro. 
+
 ✅ Se crea una nueva columna binaria llamada `HAS_CLAIM` que indica:  
 - `1` si hubo siniestro (valor de `CLAIM_PAID` > 0)  
 - `0` si no hubo siniestro  
@@ -497,6 +506,7 @@ a continuación se presenta el tratamiento que se realiza a cada caso
 El valor 2 claramente no pertenece al esquema binario estándar y puede deberse a:
 
 ✅ Error de carga o tipado
+
 ✅ Codificación extendida (por ejemplo, otro género)
 
 Para poder modelar y al no tener información adicional para eliminar los outliers suponiendo que 2 es un error o una variante de masculino. se realiza una imputación de valores proporcionales con el siguiente resultado: 
